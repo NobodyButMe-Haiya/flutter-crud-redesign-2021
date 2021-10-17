@@ -1,9 +1,13 @@
 // we will use dio because formdata not support by default
 //  dart pub add dio
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hola/android/list_android.dart';
+import 'package:hola/iOS/list_person_ios.dart';
 import 'package:hola/model/data_model.dart';
 // but we don't want to see those annoyance underline,
 import 'dart:developer' as logger;
@@ -28,8 +32,7 @@ Future<List<Data>> deletePerson(BuildContext context, Data data) async {
         logger.log("something wrong.. ");
       } else {
         // send back to the page
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ListsViewAndroid()));
+        Navigator.pop(context);
       }
     } else {
       logger.log("something wrong network connection");

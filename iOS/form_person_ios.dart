@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hola/iOS/list_person_ios.dart';
-import 'package:hola/iOS/list_search_ios.dart';
 import 'package:hola/service/future_create.dart';
 import 'package:hola/service/future_delete.dart';
 import 'package:hola/service/future_update.dart';
@@ -24,7 +22,6 @@ class FormViewiOS extends StatefulWidget {
 
 class FormViewiOSState extends State<FormViewiOS> {
   // this is for form
-  final _formKey = GlobalKey<FormState>();
 
   // i do wish   as lazy    nameController,ageController = TextEditingController .. Why we need to type  again2 same thing ?
   final nameController = TextEditingController();
@@ -59,24 +56,23 @@ class FormViewiOSState extends State<FormViewiOS> {
 
     var cupertinoNavigationBar = CupertinoNavigationBar(
         middle: const Text("Form"),
-        trailing: Material(
-            child: IconButton(
-                onPressed: () {
-                  // only assign if not the same
-                  if (widget.data.name != nameController.text) {
-                    widget.data.name = nameController.text;
-                  }
-                  // if you don't have calculation  you don't need int .. it's just data all string
-                  if (widget.data.age != int.parse(ageController.text)) {
-                    widget.data.age = int.parse(ageController.text);
-                  }
-                  if (widget.data.personId > 0) {
-                    updatePerson(context, widget.data);
-                  } else {
-                    createPerson(context, widget.data);
-                  }
-                },
-                icon: const Icon(Icons.save))));
+        trailing: CupertinoButton(
+            onPressed: () {
+              // only assign if not the same
+              if (widget.data.name != nameController.text) {
+                widget.data.name = nameController.text;
+              }
+              // if you don't have calculation  you don't need int .. it's just data all string
+              if (widget.data.age != int.parse(ageController.text)) {
+                widget.data.age = int.parse(ageController.text);
+              }
+              if (widget.data.personId > 0) {
+                updatePerson(context, widget.data);
+              } else {
+                createPerson(context, widget.data);
+              }
+            },
+            child: const Icon(Icons.save)));
 
     var cupertinoFormSection = CupertinoFormSection.insetGrouped(
         header: const Text('Form Entry'),
