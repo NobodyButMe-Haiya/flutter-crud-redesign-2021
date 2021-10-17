@@ -1,11 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hola/android/list_android.dart';
-import 'package:hola/iOS/list_person_ios.dart';
 import 'package:hola/model/data_model.dart';
 import 'dart:developer' as logger;
-import 'dart:io' show Platform;
 
 Future<List<Data>> updatePerson(BuildContext context, Data data) async {
   List<Data> dataLists = <Data>[];

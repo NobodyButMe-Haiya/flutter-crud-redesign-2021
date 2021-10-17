@@ -6,7 +6,6 @@ import 'package:hola/service/future_read.dart';
 
 import '../model/data_model.dart';
 import 'form_person_ios.dart';
-import 'dart:developer' as logger;
 
 class ListsViewSearchiOS extends StatefulWidget {
   const ListsViewSearchiOS({Key? key}) : super(key: key);
@@ -110,35 +109,12 @@ class ListsViewSearchiOSState extends State<ListsViewSearchiOS> {
               child: CircularProgressIndicator(),
             );
           }
-          var cupertinoSliverRefreshControl = CupertinoSliverRefreshControl(
-            refreshTriggerPullDistance: 100.0,
-            refreshIndicatorExtent: 60.0,
-            onRefresh: () {
-              return Future<void>.delayed(const Duration(seconds: 1))
-                ..then<void>((_) {
-                  // check mounted or not
-                  if (mounted) {
-                    logger.log("mounted");
-                  } else {
-                    logger.log("unmounted");
-                  }
-                  setState(() {
-                    _dataLists = fetchPerson();
-                  });
-                  logger.log("should be refresh");
-                });
-            },
-          );
 
           return CustomScrollView(
             physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics(),
             ),
-            slivers: <Widget>[
-              sliverToBoxAdapter,
-              cupertinoSliverRefreshControl,
-              newsListSliver
-            ],
+            slivers: <Widget>[sliverToBoxAdapter, newsListSliver],
           );
         });
 

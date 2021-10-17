@@ -22,7 +22,6 @@ class ListsViewiOSState extends State<ListsViewiOS> {
   late String title = "list";
   late String titleOri = "list";
   late String filteredValue = "";
-  late final FocusNode _focusNode;
 
   // create state constructor
   @override
@@ -32,7 +31,6 @@ class ListsViewiOSState extends State<ListsViewiOS> {
     setState(() {
       _dataLists = fetchPerson();
     });
-    _focusNode = FocusNode();
   }
 
   @override
@@ -60,19 +58,6 @@ class ListsViewiOSState extends State<ListsViewiOS> {
               },
               child: const Icon(CupertinoIcons.add))
         ]));
-
-    var sliverToBoxAdapter = SliverToBoxAdapter(
-        child: CupertinoNavigationBar(
-            heroTag: 'listPersoniOS',
-            transitionBetweenRoutes: false,
-            middle: CupertinoSearchTextField(
-                focusNode: _focusNode,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const ListsViewSearchiOS()));
-                })));
 
     var futureBuilder = FutureBuilder<List<Data>>(
         future: _dataLists,
