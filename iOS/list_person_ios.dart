@@ -1,3 +1,4 @@
+import 'package:cupertino_list_tile/cupertino_list_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -75,15 +76,18 @@ class ListsViewiOSState extends State<ListsViewiOS> {
                 (context, index) {
                   Data data = dataLists[index];
 
-                  var container = Container(
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 8.0),
-                      child: Text(data.name),
-                    ),
+                  var cupertinoListTile = CupertinoListTile(
+                    title: Text(data.name),
+                    subtitle: Text(data.age.toString()),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => FormViewiOS(data: data)));
+                    },
                   );
-                  return container;
+
+                  return cupertinoListTile;
                 },
                 childCount: dataLists.length,
               ),
