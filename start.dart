@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'dart:io' show Platform;
 
-import 'package:hola/iOS/list_person_ios.dart';
+import 'package:hola/iOS/list_ios.dart';
 import 'package:hola/android/list_android.dart';
 
 void main(List<String> args) {

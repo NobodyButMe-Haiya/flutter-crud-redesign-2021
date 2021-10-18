@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hola/android/list_android.dart';
+import 'package:hola/iOS/list_ios.dart';
 import 'package:hola/model/data_model.dart';
 import 'dart:developer' as logger;
 
@@ -28,7 +32,21 @@ Future<List<Data>> updatePerson(BuildContext context, Data data) async {
         logger.log("something wrong.. ");
       } else {
         // send back to the page
-        Navigator.pop(context);
+        if (Platform.isIOS) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            CupertinoPageRoute(builder: (context) => const ListsViewiOS()),
+            (Route<dynamic> route) => false,
+          );
+        } else if (Platform.isAndroid) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const ListsViewAndroid()),
+            (Route<dynamic> route) => false,
+          );
+        } else {
+          logger.log("only for mobile");
+        }
       }
     } else {
       logger.log("something wrong network connection");

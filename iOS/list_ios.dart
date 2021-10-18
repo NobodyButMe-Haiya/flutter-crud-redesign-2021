@@ -2,8 +2,8 @@ import 'package:cupertino_list_tile/cupertino_list_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hola/iOS/form_person_ios.dart';
-import 'package:hola/iOS/list_search_ios.dart';
+import 'package:hola/iOS/form_ios.dart';
+import 'package:hola/iOS/search_ios.dart';
 import 'package:hola/service/future_read.dart';
 
 import '../model/data_model.dart';

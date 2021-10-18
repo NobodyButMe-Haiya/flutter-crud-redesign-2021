@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hola/android/form_person_android.dart';
-import 'package:hola/android/list_search_android.dart';
+import 'package:hola/android/form_android.dart';
+import 'package:hola/android/search_android.dart';
 import 'package:hola/service/future_read.dart';
 
 import '../model/data_model.dart';

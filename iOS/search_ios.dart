@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:hola/service/future_read.dart';
 
 import '../model/data_model.dart';
-import 'form_person_ios.dart';
+import 'form_ios.dart';
 
 class ListsViewSearchiOS extends StatefulWidget {
   const ListsViewSearchiOS({Key? key}) : super(key: key);
